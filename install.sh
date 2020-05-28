@@ -10,14 +10,17 @@ cd /root
     apt install docker-ce -y
     apt install docker-compose -y
     systemctl status docker
+        echo "[*] Cloning Repo"
    git clone https://github.com/lunarobliq/Ghostwriter
    cd Ghostwriter
+       echo "[*] Installing depends"
    apt install python-pip -y
    pip install text-unidecode
    apt install python3-pip -y
    pip3 install text-unidecode
    mv .envs_template/ .envs
    cd /root/Ghostwriter
+       echo "[*] Setting up docker"
    docker-compose -f local.yml up -d
    docker-compose -f local.yml run --rm django /seed_data
    docker-compose -f local.yml run --rm django python manage.py createsuperuser
